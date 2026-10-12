@@ -30,7 +30,7 @@ export function filesService(storage: StorageAdapter) {
         p_owner: owner, p_folder: i.folderId ?? null, p_name: name, p_mime: i.mimeType.toLowerCase(), p_ext: t.ext,
         p_size: i.size, p_key: key, p_ttl_seconds: env.UPLOAD_RESERVATION_TTL_SECONDS, p_global_cap: env.GLOBAL_STORAGE_CAP_BYTES });
       const up = await storage.presignUpload(key, i.mimeType.toLowerCase(), i.size, env.UPLOAD_RESERVATION_TTL_SECONDS);
-      return { fileId: id as string, uploadUrl: up.url, headers: up.headers, expiresInSeconds: env.UPLOAD_RESERVATION_TTL_SECONDS };
+      return { fileId: id as string, uploadUrl: up.url, headers: up.headers, mode: up.mode ?? 'raw', expiresInSeconds: env.UPLOAD_RESERVATION_TTL_SECONDS };
     },
     /** Verifies the object really exists with the right size and signature before accounting. Idempotent. */
     async completeUpload(owner: string, id: string) {

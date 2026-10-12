@@ -49,7 +49,7 @@ export default function Files() {
     try {
       const it = await api('/files/upload-intent', { method: 'POST', body: JSON.stringify({ name: item.name, mimeType: mimeOf(item.file), size: item.file.size, folderId }) });
       fileId = it.fileId;
-      await putWithProgress(it.uploadUrl, item.file, it.headers, (p) => patch(item.id, { progress: p }), ctrl.signal);
+      await putWithProgress(it.uploadUrl, new File([item.file], item.name, { type: mimeOf(item.file) }), it.headers, it.mode, (p) => patch(item.id, { progress: p }), ctrl.signal);
       await api(`/files/${fileId}/complete-upload`, { method: 'POST' });
       patch(item.id, { status: 'done', progress: 1 }); load();
     } catch (e: any) {

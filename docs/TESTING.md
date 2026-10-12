@@ -9,3 +9,5 @@
 **Execution status: NOT RUN.** The environment where this code was written had no network access, so dependencies were never installed; nothing has been compiled or executed. Expect small type errors on the first build.
 
 **Not written yet (need a dev Supabase project):** SQL-level tests for concurrent reservations, idempotent `finalize_upload`, reservation expiry, RLS checks via the Supabase client, and R2 round-trips. The frontend has no tests.
+
+The Supabase Storage adapter (`storage/supabase.ts`) has no automated tests; it is only exercised against a real project (upload, complete, download, delete).

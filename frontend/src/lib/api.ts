@@ -16,7 +16,7 @@ export async function api<T = any>(path: string, init: RequestInit = {}): Promis
   return body as T;
 }
 
-export function putWithProgress(url: string, file: File, headers: Record<string, string>, onProgress: (p: number) => void, signal: AbortSignal): Promise<void> {
+export function putWithProgress(url: string, file: File, headers: Record<string, string>, mode: 'raw' | 'form', onProgress: (p: number) => void, signal: AbortSignal): Promise<void> {
   return new Promise((resolve, reject) => {
     const x = new XMLHttpRequest();
     x.open('PUT', url);
@@ -25,7 +25,7 @@ export function putWithProgress(url: string, file: File, headers: Record<string,
     x.onload = () => (x.status >= 200 && x.status < 300 ? resolve() : reject(new Error(`Storage rejected the upload (${x.status}).`)));
     x.onerror = () => reject(new Error('Network error during upload.'));
     signal.addEventListener('abort', () => { x.abort(); reject(new Error('Upload cancelled.')); });
-    x.send(file);
+    if (mode === 'form') { const fd = new FormData(); fd.append('cacheControl', '3600'); fd.append('', file); x.send(fd); } else x.send(file);
   });
 }
 export const fmtBytes = (n: number) => { if (n < 1024) return `${n} B`; const u = ['KB', 'MB', 'GB', 'TB']; let i = -1; do { n /= 1024; i++; } while (n >= 1024 && i < 3); return `${n.toFixed(n < 10 ? 1 : 0)} ${u[i]}`; };

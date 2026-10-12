@@ -7,9 +7,9 @@ export function createR2(): StorageAdapter {
   const s3 = new S3Client({
     region: 'auto',
     endpoint: `https://${env.R2_ACCOUNT_ID}.r2.cloudflarestorage.com`,
-    credentials: { accessKeyId: env.R2_ACCESS_KEY_ID, secretAccessKey: env.R2_SECRET_ACCESS_KEY },
+    credentials: { accessKeyId: env.R2_ACCESS_KEY_ID!, secretAccessKey: env.R2_SECRET_ACCESS_KEY! },
   });
-  const Bucket = env.R2_BUCKET_NAME;
+  const Bucket = env.R2_BUCKET_NAME!;
   return {
     async presignUpload(key, contentType, size, ttl) {
       const cmd = new PutObjectCommand({ Bucket, Key: key, ContentType: contentType, ContentLength: size });

@@ -1,4 +1,5 @@
 # Free-tier notes (verify current terms before launch)
+**Default storage is Supabase Storage**, which shares the Supabase project's plan limits (the free plan has been about 1 GB total storage with a per-file upload cap; egress is also limited). Keep `GLOBAL_STORAGE_CAP_BYTES` below the plan total and keep in mind free projects can pause after inactivity.
 Plans and limits change; confirm on each provider's pricing page.
 - **Cloudflare R2:** a free monthly allowance of storage and operations has been offered (historically 10 GB-month, with Class A/B operation allowances) and egress to the internet is not charged. R2 may require a payment method to activate. Set `GLOBAL_STORAGE_CAP_BYTES` below the allowance.
 - **Supabase Free:** limited database size, auth users, and bandwidth; projects may pause after inactivity. Built-in auth email is rate limited; use custom SMTP for real launches.
