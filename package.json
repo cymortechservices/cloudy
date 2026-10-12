@@ -1,0 +1,3 @@
+{ "name": "cloudy", "private": true, "workspaces": ["backend", "frontend"],
+  "scripts": { "install:all": "npm install", "dev:backend": "npm run dev -w backend", "dev:frontend": "npm run dev -w frontend",
+    "build": "npm run build -w backend && npm run build -w frontend", "test": "npm run test -w backend" } }

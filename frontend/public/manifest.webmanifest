@@ -1,0 +1,3 @@
+{ "name": "Cloudy", "short_name": "Cloudy", "description": "Your files. Your space. Your Cloudy.", "start_url": "/dashboard", "display": "standalone",
+  "background_color": "#0b1220", "theme_color": "#0b1220",
+  "icons": [{ "src": "/icons/logo.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any maskable" }] }

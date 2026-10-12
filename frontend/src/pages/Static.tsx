@@ -1,0 +1,8 @@
+import { Link } from 'react-router-dom';
+import { Logo, Footer } from '../components/Logo';
+const Page = ({ title, children }: { title: string; children: React.ReactNode }) => <div><header className="border-b border-line"><div className="max-w-3xl mx-auto px-4 min-h-[60px] flex items-center"><Link to="/"><Logo /></Link></div></header>
+  <main className="max-w-3xl mx-auto px-4 py-10 space-y-3"><h1 className="text-3xl font-bold">{title}</h1>{children}</main><Footer /></div>;
+export const About = () => <Page title="About Cloudy"><p className="text-muted">Cloudy is a private cloud document storage platform by CymorTechServices.</p><p className="text-muted">Developed by Legendary Smiley Cymor.</p><p className="text-muted">Your files. Your space. Your Cloudy.</p></Page>;
+export const Privacy = () => <Page title="Privacy Policy"><p className="text-muted">Draft for review by the operator. Cloudy stores your account email, display name, file metadata and the files you upload. Files are kept in private storage and are accessible only to your account. You can delete files or your whole account at any time in Settings. Replace this text with a policy reviewed for your jurisdiction (e.g. Kenya's Data Protection Act) before launch.</p></Page>;
+export const Terms = () => <Page title="Terms of Service"><p className="text-muted">Draft for review by the operator. Use Cloudy only for lawful content you have the right to store. Storage is limited by quota and service capacity and is not guaranteed unlimited. Replace this text with terms reviewed by a qualified professional before launch.</p></Page>;
+export const Contact = () => <Page title="Contact"><p className="text-muted">Contact CymorTechServices: set your support email here before launch.</p></Page>;

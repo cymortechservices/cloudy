@@ -1,0 +1,1 @@
+-- Intentionally empty: Cloudy has no seed data. Profiles and quotas are created by the on-signup trigger.

@@ -1,0 +1,12 @@
+@tailwind base; @tailwind components; @tailwind utilities;
+:root { --bg: 244 247 252; --card: 255 255 255; --ink: 15 23 42; --muted: 100 116 139; --line: 226 232 240; --brand: 14 165 233; --brand2: 99 102 241; }
+.dark { --bg: 11 18 32; --card: 20 29 48; --ink: 233 238 248; --muted: 148 163 184; --line: 38 50 74; --brand: 34 211 238; --brand2: 129 140 248; }
+body { @apply bg-bg text-ink antialiased; font-family: Inter, system-ui, sans-serif; }
+.btn { @apply inline-flex items-center justify-center gap-2 rounded-xl px-4 min-h-[44px] text-sm font-semibold transition disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-brand; }
+.btn-primary { @apply btn text-white bg-gradient-to-r from-sky-500 to-indigo-500 hover:opacity-90; }
+.btn-ghost { @apply btn border border-line bg-card hover:bg-line/50; }
+.btn-danger { @apply btn bg-red-600 text-white hover:bg-red-700; }
+.input { @apply w-full rounded-xl border border-line bg-card px-3 min-h-[44px] text-sm focus-visible:outline focus-visible:outline-2 focus-visible:outline-brand; }
+.card { @apply rounded-2xl border border-line bg-card shadow-sm; }
+.label { @apply block text-sm font-medium mb-1; }
+.err { @apply text-xs text-red-500 mt-1; }
