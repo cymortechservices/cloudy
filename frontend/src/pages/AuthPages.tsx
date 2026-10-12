@@ -30,7 +30,7 @@ export function Login() {
   const nav = useNavigate(); const [err, setErr] = useState('');
   const f = useForm({ resolver: zodResolver(z.object({ email: z.string().email('Enter a valid email'), password: z.string().min(1, 'Enter your password') })) });
   const submit = f.handleSubmit(async (v) => {
-    setErr(''); const { error } = await supabase.auth.signInWithPassword(v);
+    setErr(''); const { error } = await supabase.auth.signInWithPassword({ email: v.email, password: v.password });
     if (error) setErr(/confirm/i.test(error.message) ? 'Please verify your email first. Check your inbox.' : 'Incorrect email or password.'); else nav('/dashboard');
   });
   return <Shell title="Welcome back"><form onSubmit={submit} className="space-y-4" noValidate>
